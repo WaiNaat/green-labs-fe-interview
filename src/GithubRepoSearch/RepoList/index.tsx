@@ -1,25 +1,4 @@
-import { graphql } from 'relay-runtime';
-import { RepoListQuery as RepoListQueryType } from './__generated__/RepoListQuery.graphql';
-import { useLazyLoadQuery } from 'react-relay';
-
-const RepoListQuery = graphql`
-  query RepoListQuery($query: String!, $beforeCursor: String, $afterCursor: String) {
-    search(query: $query, type: REPOSITORY, first: 5, after: $afterCursor, before: $beforeCursor) {
-      edges {
-        node {
-          ... on Repository {
-            name
-            owner {
-              login
-            }
-            description
-            stargazerCount
-          }
-        }
-      }
-    }
-  }
-`;
+import usePagenatedSearch from './hooks/usePagenatedSearch';
 
 type RepoListProps = {
   query: string;
@@ -29,12 +8,20 @@ const RepoList = (props: RepoListProps) => {
   const { query } = props;
 
   const {
-    search: { edges: list },
-  } = useLazyLoadQuery<RepoListQueryType>(RepoListQuery, { query });
+    result,
+    currentPage,
+    hasResult,
+    hasNextPage,
+    hasPreviousPage,
+    getNextPage,
+    getPreviousPage,
+  } = usePagenatedSearch(query);
 
   return (
     <section>
-      {list?.map((value) => (
+      {query.length === 0 && <p>검색해 보세요!</p>}
+      {query.length > 0 && !hasResult && <p>검색 결과가 없어요ㅠㅠ</p>}
+      {result?.map((value) => (
         <div key={`${value?.node?.owner?.login}${value?.node?.name}`}>
           <h3>
             {value?.node?.owner?.login}/{value?.node?.name}
@@ -43,6 +30,17 @@ const RepoList = (props: RepoListProps) => {
           <p>{value?.node?.stargazerCount}</p>
         </div>
       ))}
+      {query.length > 0 && hasResult && (
+        <>
+          <button type="button" onClick={getPreviousPage} disabled={!hasPreviousPage}>
+            이전
+          </button>
+          <p>{currentPage} 페이지</p>
+          <button type="button" onClick={getNextPage} disabled={!hasNextPage}>
+            다음
+          </button>
+        </>
+      )}
     </section>
   );
 };

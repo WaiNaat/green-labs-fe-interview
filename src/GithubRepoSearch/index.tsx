@@ -13,7 +13,7 @@ const GithubRepoSearch = () => {
     <main>
       <SearchBox onSearch={search} />
       <Suspense fallback={<h1>로딩중..</h1>}>
-        <RepoList query={query} />
+        <RepoList key={query} query={query} />
       </Suspense>
     </main>
   );
