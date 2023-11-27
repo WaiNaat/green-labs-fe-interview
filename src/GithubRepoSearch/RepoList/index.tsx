@@ -1,3 +1,4 @@
+import Star from '../Star';
 import usePagenatedSearch from './hooks/usePagenatedSearch';
 
 type RepoListProps = {
@@ -21,15 +22,19 @@ const RepoList = (props: RepoListProps) => {
     <section>
       {query.length === 0 && <p>검색해 보세요!</p>}
       {query.length > 0 && !hasResult && <p>검색 결과가 없어요ㅠㅠ</p>}
-      {result?.map((value) => (
-        <div key={`${value?.node?.owner?.login}${value?.node?.name}`}>
-          <h3>
-            {value?.node?.owner?.login}/{value?.node?.name}
-          </h3>
-          <p>{value?.node?.description}</p>
-          <p>{value?.node?.stargazerCount}</p>
-        </div>
-      ))}
+      {result?.map(
+        (value) =>
+          value &&
+          value.node && (
+            <div key={`${value.node.owner?.login}${value.node.name}`}>
+              <h3>
+                {value.node.owner?.login}/{value.node.name}
+              </h3>
+              <p>{value.node.description}</p>
+              <Star starInfo={value.node} />
+            </div>
+          )
+      )}
       {query.length > 0 && hasResult && (
         <>
           <button type="button" onClick={getPreviousPage} disabled={!hasPreviousPage}>

@@ -34,7 +34,7 @@ const usePagenatedSearchQuery = graphql`
               login
             }
             description
-            stargazerCount
+            ...StarFragment
           }
         }
       }
