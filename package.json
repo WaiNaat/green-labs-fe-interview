@@ -28,8 +28,12 @@
     "@vitejs/plugin-react": "^4.2.0",
     "babel-plugin-relay": "^16.0.0",
     "eslint": "^8.53.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",
+    "eslint-plugin-relay": "^1.8.3",
+    "prettier": "^3.1.0",
     "relay-compiler": "^16.0.0",
     "typescript": "^5.2.2",
     "vite": "^5.0.0"

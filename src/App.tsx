@@ -1,5 +1,5 @@
-import { RelayEnvironmentProvider } from "react-relay/hooks";
-import { RelayEnvironment } from "./RelayEnvironment";
+import { RelayEnvironmentProvider } from 'react-relay/hooks';
+import { RelayEnvironment } from './RelayEnvironment';
 
 function App() {
   return (
