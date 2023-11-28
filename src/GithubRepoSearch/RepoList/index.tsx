@@ -6,9 +6,9 @@ import {
   RepoListQuery as RepoListQueryType,
 } from './__generated__/RepoListQuery.graphql';
 import { useState } from 'react';
-import { List, PageMoveButton, Pagenation, Section, Text, Title } from './RepoList.style';
+import { List, PageMoveButton, Pagenation, Section, Text } from './RepoList.style';
 
-const SINGLE_PAGE_ITEM_COUNT = 5;
+export const SINGLE_PAGE_ITEM_COUNT = 5;
 
 const RepoListQuery = graphql`
   query RepoListQuery(
@@ -87,11 +87,6 @@ const RepoList = (props: RepoListProps) => {
 
   return (
     <Section>
-      {query.length > 0 ? (
-        <Title>&quot;{query}&quot; 검색 결과</Title>
-      ) : (
-        <Text>레포지토리를 검색해 보세요!</Text>
-      )}
       {query.length > 0 && result.length === 0 && <Text>검색 결과가 없어요😥</Text>}
       <List>
         {result.map(

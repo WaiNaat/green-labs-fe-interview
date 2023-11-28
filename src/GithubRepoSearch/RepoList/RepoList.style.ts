@@ -10,17 +10,6 @@ export const List = styled.li`
   }
 `;
 
-export const Title = styled.h2`
-  overflow: hidden;
-
-  width: 100%;
-
-  font-size: 3rem;
-  font-weight: bold;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-`;
-
 export const Text = styled.p`
   font-size: 2rem;
 `;
@@ -35,9 +24,16 @@ export const PageMoveButton = styled.button`
 
   transition: all 0.2s;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: white;
     background-color: #333333;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    color: #ababab;
+    background-color: white;
   }
 `;
 

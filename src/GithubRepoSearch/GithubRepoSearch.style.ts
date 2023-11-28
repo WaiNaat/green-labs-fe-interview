@@ -10,3 +10,18 @@ export const Main = styled.main`
   margin: 0 auto;
   padding: 2rem;
 `;
+
+export const Title = styled.h2`
+  overflow: hidden;
+
+  width: 100%;
+
+  font-size: 3rem;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+
+export const Text = styled.p`
+  font-size: 2rem;
+`;

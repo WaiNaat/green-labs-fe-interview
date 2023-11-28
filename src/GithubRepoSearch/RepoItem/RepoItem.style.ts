@@ -14,12 +14,13 @@ export const Link = styled.a`
   display: flex;
 
   box-sizing: content-box;
-  width: 100%;
+  width: calc(100% - 7rem);
   height: 7rem;
 
   transition: all 0.2s;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: white;
     background-color: #333333;
   }
@@ -35,7 +36,7 @@ export const Info = styled.div`
   display: flex;
   flex-direction: column;
 
-  width: calc(100% - 14rem);
+  width: calc(100% - 7rem);
   height: 100%;
   padding: 0.7rem;
 `;
@@ -64,7 +65,6 @@ export const RepoDescription = styled.p`
   margin-top: 0.7rem;
 
   font-size: 1.1rem;
-  line-height: 1.5em;
   line-height: 1.25rem;
   text-overflow: ellipsis;
 
