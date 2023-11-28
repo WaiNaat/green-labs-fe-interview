@@ -17,6 +17,7 @@ export const Area = styled.button`
   }
 
   &:disabled {
+    cursor: progress;
     background-color: #888888;
   }
 `;
