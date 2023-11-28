@@ -1,9 +1,10 @@
 import { Suspense, useState } from 'react';
-import RepoList, { SINGLE_PAGE_ITEM_COUNT } from './RepoList';
+import RepoList from './RepoList';
 import SearchBox from './SearchBox';
 import { Main, Text, Title } from './GithubRepoSearch.style';
-import Skeleton from './RepoItem/Skeleton';
-import { List } from './RepoList/RepoList.style';
+import Skeleton from './RepoList/Skeleton';
+import ErrorBoundary from '../ErrorBoundary';
+import Error from './RepoList/Error';
 
 const GithubRepoSearch = () => {
   const [query, setQuery] = useState('');
@@ -18,23 +19,13 @@ const GithubRepoSearch = () => {
       {query.length > 0 ? (
         <Title>&quot;{query}&quot; 검색 결과</Title>
       ) : (
-        <Text>레포지토리를 검색해 보세요!</Text>
+        <Text>깃허브 저장소를 검색해 보세요!</Text>
       )}
-      <Suspense
-        fallback={
-          query.length > 0 && (
-            <List>
-              {Array.from({ length: SINGLE_PAGE_ITEM_COUNT }).map((_, index) => (
-                <ul key={index}>
-                  <Skeleton />
-                </ul>
-              ))}
-            </List>
-          )
-        }
-      >
-        <RepoList key={query} query={query} />
-      </Suspense>
+      <ErrorBoundary fallback={<Error />}>
+        <Suspense fallback={query.length > 0 && <Skeleton />}>
+          <RepoList key={query} query={query} />
+        </Suspense>
+      </ErrorBoundary>
     </Main>
   );
 };

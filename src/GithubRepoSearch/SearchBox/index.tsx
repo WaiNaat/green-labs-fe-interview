@@ -30,7 +30,7 @@ const SearchBox = (props: SearchBoxProps) => {
 
   return (
     <Area>
-      <HiddenLabel htmlFor={id}>레포지토리 검색</HiddenLabel>
+      <HiddenLabel htmlFor={id}>저장소 검색</HiddenLabel>
       <GithubIcon />
       <Input
         id={id}
@@ -38,7 +38,7 @@ const SearchBox = (props: SearchBoxProps) => {
         value={query}
         onChange={validateAndSetQuery}
         onKeyUp={searchIfEnter}
-        placeholder="레포지토리 검색"
+        placeholder="저장소 검색"
       />
       <Button type="button" onClick={search} aria-label="검색">
         <SearchIcon aria-hidden />

@@ -1,8 +1,8 @@
 import type { StarFragment$key } from './__generated__/StarFragment.graphql';
 import type { StarAddMutation } from './__generated__/StarAddMutation.graphql';
+import type { StarRemoveMutation } from './__generated__/StarRemoveMutation.graphql';
 import { useFragment, useMutation } from 'react-relay';
 import { graphql } from 'relay-runtime';
-import { StarRemoveMutation } from './__generated__/StarRemoveMutation.graphql';
 import { Area, Message, StarIcon, Stargazers } from './Star.style';
 
 const StarFragment = graphql`

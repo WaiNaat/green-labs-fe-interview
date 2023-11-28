@@ -14,9 +14,13 @@ const moveBackdrop = keyframes`
   }
 `;
 
-export const SkeletonArea = styled.div<SkeletonAreaProps>`
+export const SkeletonArea = styled.span<SkeletonAreaProps>`
+  display: block;
+
   width: ${({ $width }) => $width};
   height: ${({ $height }) => $height ?? '100%'};
+
   background-image: linear-gradient(90deg, #cdcdcd, #eeeeee, #cdcdcd);
+
   animation: ${moveBackdrop} 20s linear infinite;
 `;

@@ -7,6 +7,7 @@ import {
 } from './__generated__/RepoListQuery.graphql';
 import { useState } from 'react';
 import { List, PageMoveButton, Pagenation, Section, Text } from './RepoList.style';
+import useFetchKey from '../../ErrorBoundary/hooks/useFetchKey';
 
 export const SINGLE_PAGE_ITEM_COUNT = 5;
 
@@ -54,17 +55,22 @@ const RepoList = (props: RepoListProps) => {
 
   const [index, setIndex] = useState(1);
   const [pageEndCursors, setPageEndCursors] = useState<Array<string | null | undefined>>([null]);
+  const fetchKey = useFetchKey();
 
   const {
     search: {
       edges,
       pageInfo: { endCursor, hasPreviousPage, hasNextPage },
     },
-  } = useLazyLoadQuery<RepoListQueryType>(RepoListQuery, {
-    query,
-    afterCursor: pageEndCursors[index - 1],
-    searchCount: SINGLE_PAGE_ITEM_COUNT,
-  });
+  } = useLazyLoadQuery<RepoListQueryType>(
+    RepoListQuery,
+    {
+      query,
+      afterCursor: pageEndCursors[index - 1],
+      searchCount: SINGLE_PAGE_ITEM_COUNT,
+    },
+    { fetchKey }
+  );
 
   const getPreviousPage = () => {
     if (hasPreviousPage) {
