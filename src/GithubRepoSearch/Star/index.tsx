@@ -35,13 +35,13 @@ const removeStarMutation = graphql`
 `;
 
 type StarProps = {
-  starInfo: StarFragment$key;
+  data: StarFragment$key;
 };
 
 const Star = (props: StarProps) => {
-  const { starInfo } = props;
+  const { data } = props;
 
-  const { id, stargazerCount, viewerHasStarred } = useFragment(StarFragment, starInfo);
+  const { id, stargazerCount, viewerHasStarred } = useFragment(StarFragment, data);
   const [addStar, isAddingStar] = useMutation<StarAddMutation>(addStarMutation);
   const [removeStar, isRemovingStar] = useMutation<StarRemoveMutation>(removeStarMutation);
 
