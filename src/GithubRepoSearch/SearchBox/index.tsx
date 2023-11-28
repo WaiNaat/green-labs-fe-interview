@@ -1,6 +1,10 @@
 import { useId, useState } from 'react';
+import { Area, Button, HiddenLabel, Input } from './SearchBox.style';
+import SearchIcon from './assets/SearchIcon';
+import GithubIcon from './assets/GithubIcon';
 
 type SearchBoxProps = {
+  /** 사용자가 검색 버튼 또는 엔터를 입력했을 때 호출됩니다. */
   onSearch: (query: string) => void;
 };
 
@@ -25,19 +29,21 @@ const SearchBox = (props: SearchBoxProps) => {
   };
 
   return (
-    <>
-      <label htmlFor={id}>레포지토리 검색</label>
-      <input
+    <Area>
+      <HiddenLabel htmlFor={id}>레포지토리 검색</HiddenLabel>
+      <GithubIcon />
+      <Input
         id={id}
-        type="text"
+        type="search"
         value={query}
         onChange={validateAndSetQuery}
         onKeyUp={searchIfEnter}
+        placeholder="레포지토리 검색"
       />
-      <button type="button" onClick={search}>
-        검색
-      </button>
-    </>
+      <Button type="button" onClick={search} aria-label="검색">
+        <SearchIcon aria-hidden />
+      </Button>
+    </Area>
   );
 };
 
