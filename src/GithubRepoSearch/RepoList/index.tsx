@@ -6,6 +6,7 @@ import {
   RepoListQuery as RepoListQueryType,
 } from './__generated__/RepoListQuery.graphql';
 import { useState } from 'react';
+import { List, PageMoveButton, Pagenation, Section, Text, Title } from './RepoList.style';
 
 const SINGLE_PAGE_ITEM_COUNT = 5;
 
@@ -85,22 +86,35 @@ const RepoList = (props: RepoListProps) => {
     : [];
 
   return (
-    <section>
-      {query.length === 0 && <p>검색해 보세요!</p>}
-      {query.length > 0 && result.length === 0 && <p>검색 결과가 없어요ㅠㅠ</p>}
-      {result.map((value) => value.node && <RepoItem data={value.node} />)}
-      {query.length > 0 && result.length > 0 && (
-        <>
-          <button type="button" onClick={getPreviousPage} disabled={!hasPreviousPage}>
-            이전
-          </button>
-          <p>{index} 페이지</p>
-          <button type="button" onClick={getNextPage} disabled={!hasNextPage}>
-            다음
-          </button>
-        </>
+    <Section>
+      {query.length > 0 ? (
+        <Title>&quot;{query}&quot; 검색 결과</Title>
+      ) : (
+        <Text>레포지토리를 검색해 보세요!</Text>
       )}
-    </section>
+      {query.length > 0 && result.length === 0 && <Text>검색 결과가 없어요😥</Text>}
+      <List>
+        {result.map(
+          (value, index) =>
+            value.node && (
+              <ul key={`${endCursor}${index}`}>
+                <RepoItem data={value.node} />
+              </ul>
+            )
+        )}
+      </List>
+      {query.length > 0 && result.length > 0 && (
+        <Pagenation>
+          <PageMoveButton type="button" onClick={getPreviousPage} disabled={!hasPreviousPage}>
+            ← 이전
+          </PageMoveButton>
+          <Text>{index} 페이지</Text>
+          <PageMoveButton type="button" onClick={getNextPage} disabled={!hasNextPage}>
+            다음 →
+          </PageMoveButton>
+        </Pagenation>
+      )}
+    </Section>
   );
 };
 
