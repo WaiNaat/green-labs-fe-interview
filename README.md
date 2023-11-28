@@ -4,7 +4,7 @@
 
 1. 다운로드
 
-```
+```shell
 git clone https://github.com/WaiNaat/green-labs-fe-interview.git
 ```
 2. env 설정    
@@ -20,7 +20,7 @@ git clone https://github.com/WaiNaat/green-labs-fe-interview.git
 
 1. 의존성 설치
 
-```
+```shell
 pnpm i
 ```
 
@@ -35,3 +35,15 @@ pnpm relay,
 ```shell
 pnpm run dev
 ```
+
+4. 접속
+
+`http://localhost:5173` 에 접속하여 결과를 확인할 수 있습니다.
+
+## 스토리북 UI 테스트
+
+```shell
+pnpm run storybook
+```
+
+`http://localhost:6006` 에 접속하여 결과를 확인할 수 있습니다.
