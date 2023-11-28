@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Area = styled.div`
   display: flex;
   width: 100%;
-  border: 2px solid rgb(72, 206, 140);
+  border: 2px solid #333333;
   border-radius: 7777px;
 `;
 
@@ -23,6 +23,7 @@ export const HiddenLabel = styled.label`
 export const Input = styled.input`
   width: 85%;
   margin-left: 0rem;
+  font-size: 2.5rem;
   border: none;
 
   &:focus {
@@ -35,14 +36,15 @@ export const Button = styled.button`
   align-items: center;
   justify-content: center;
 
-  width: 4rem;
-  height: 4rem;
+  box-sizing: content-box;
+  width: 6rem;
+  height: 6rem;
   margin-right: 0;
   margin-left: auto;
 
   font-size: 1px;
 
-  background-color: rgb(72, 206, 140);
-  border: 1px solid rgb(72, 206, 140);
-  border-radius: 2rem;
+  background-color: #333333;
+  border: 1px solid #333333;
+  border-radius: 3rem;
 `;
