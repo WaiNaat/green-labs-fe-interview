@@ -3,6 +3,7 @@ import type { StarAddMutation } from './__generated__/StarAddMutation.graphql';
 import { useFragment, useMutation } from 'react-relay';
 import { graphql } from 'relay-runtime';
 import { StarRemoveMutation } from './__generated__/StarRemoveMutation.graphql';
+import { Area, Message, StarIcon, Stargazers } from './Star.style';
 
 const StarFragment = graphql`
   fragment StarFragment on Starrable {
@@ -54,9 +55,11 @@ const Star = (props: StarProps) => {
   };
 
   return (
-    <button type="button" disabled={isAddingStar || isRemovingStar} onClick={toggleStar}>
-      {viewerHasStarred ? '★' : '☆'} {stargazerCount.toLocaleString()}
-    </button>
+    <Area type="button" disabled={isAddingStar || isRemovingStar} onClick={toggleStar}>
+      <StarIcon>{viewerHasStarred ? '★' : '☆'}</StarIcon>
+      <Stargazers>{stargazerCount.toLocaleString()}</Stargazers>
+      <Message>{viewerHasStarred ? 'Unstar' : 'Star'}</Message>
+    </Area>
   );
 };
 
