@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/react';
 import GlobalStyle from '../src/GlobalStyle.style';
+import { Suspense } from 'react';
 
 const preview: Preview = {
   parameters: {
@@ -15,7 +16,9 @@ const preview: Preview = {
     (Story) => (
       <>
         <GlobalStyle />
-        <Story />
+        <Suspense>
+          <Story />
+        </Suspense>
       </>
     ),
   ],

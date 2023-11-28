@@ -21,6 +21,7 @@
     "styled-components": "^6.1.1"
   },
   "devDependencies": {
+    "@imchhh/storybook-addon-relay": "^0.0.8",
     "@storybook/addon-essentials": "7.5.3",
     "@storybook/addon-interactions": "7.5.3",
     "@storybook/addon-links": "7.5.3",
@@ -33,6 +34,7 @@
     "@types/react-dom": "^18.2.15",
     "@types/react-relay": "^16.0.2",
     "@types/relay-runtime": "^14.1.17",
+    "@types/relay-test-utils": "^14.1.4",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
     "@vitejs/plugin-react": "^4.2.0",
@@ -46,6 +48,7 @@
     "postcss-styled-syntax": "^0.5.0",
     "prettier": "^3.1.0",
     "relay-compiler": "^16.0.0",
+    "relay-test-utils": "^16.0.0",
     "storybook": "7.5.3",
     "stylelint": "^15.11.0",
     "stylelint-config-clean-order": "^5.2.0",
